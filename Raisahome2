@@ -1,0 +1,85 @@
+package myhomework_2;
+
+import java.util.Scanner;
+
+public class h_m_2 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Введите число от 1 до 4:");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                sumGreaterThanFive(new int[]{1, 6, 3, 8, 4, 10, 2});
+                break;
+            case 2:
+                increaseElements(new int[]{1, 2, 3, 4, 5}, 3);
+                break;
+            case 3:
+                compareHalves(new int[]{1, 2, 3, 4, 5, 6});
+                break;
+            case 4:
+                fillArrayWithNumber(new int[5], 7);
+                break;
+            default:
+                System.out.println("Некорректный ввод. Пожалуйста, введите число от 1 до 4.");
+        }
+
+        scanner.close();
+    }
+
+    public static void sumGreaterThanFive(int[] array) {
+        int sum = 0;
+        for (int num : array) {
+            if (num > 5) {
+                sum += num;
+            }
+        }
+        System.out.println("Сумма элементов больше 5: " + sum);
+    }
+
+    public static void increaseElements(int[] array, int increment) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] += increment;
+        }
+        System.out.print("Измененный массив: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+
+    public static void compareHalves(int[] array) {
+        int mid = array.length / 2;
+        int sumFirstHalf = 0;
+        int sumSecondHalf = 0;
+
+        for (int i = 0; i < mid; i++) {
+            sumFirstHalf += array[i];
+        }
+
+        for (int i = mid; i < array.length; i++) {
+            sumSecondHalf += array[i];
+        }
+
+        if (sumFirstHalf > sumSecondHalf) {
+            System.out.println("Сумма первой половины больше: " + sumFirstHalf);
+        } else if (sumSecondHalf > sumFirstHalf) {
+            System.out.println("Сумма второй половины больше: " + sumSecondHalf);
+        } else {
+            System.out.println("Суммы обеих половин равны: " + sumFirstHalf);
+        }
+    }
+
+    public static void fillArrayWithNumber(int[] array, int number) {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = number;
+        }
+        System.out.print("Заполненный массив: ");
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
+}
