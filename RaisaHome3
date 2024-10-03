@@ -1,0 +1,82 @@
+package myHomework;
+
+import java.util.Scanner;
+
+public class Homwork2S {
+    public static void main(String[] args) {
+        int[] myMassive = new int[]{1, 5, 10, 23, 27, 28, 29, 31, 36, 37};
+        int[] myMassive1 = new int[]{43, 41, 35, 33, 27, 23, 19, 15, 14, 11};
+        int[] myMassive3 = new int[]{74, 5, 710, 36, 7, 728, 91, 1, 6, 1};
+        int[] myMassive4 = new int[]{5, -5, 1, 0, 7, 3, -9};
+        myMethod4(myMassive4);
+    }
+
+    public static void myMethod1(int[] a, int[] b, int[] c) {
+        int[] massive = new int[a.length];
+        for (int i = 0; i < a.length; i++) {
+            massive[i] = a[i] + b[i] + c[i];
+            System.out.print(massive[i] + " ");
+        }
+    }
+
+    public static void myMethod2(int[] massive) {
+        int k = 0;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Как проверить массив, в порядке возрастания или убывания?: ");
+        String prov = scan.nextLine();
+        if (prov.equals("Возрастания")) {
+            for (int i = 1; i < massive.length; i++) {
+                if (massive[i - 1] < massive[i]) {
+                    k += 1;
+                } else {
+                    System.out.println("Массив не идёт в порядке возрастания");
+                    break;
+                }
+            }
+            if (k >= massive.length - 1) {
+                System.out.println("Массив идёт в порядке возрастания!");
+            }
+        }
+        if (prov.equals("Убывания")) {
+            for (int i = 1; i < massive.length; i++) {
+                if (massive[i - 1] > massive[i]) {
+                    k += 1;
+                } else {
+                    System.out.println("Массив не идёт в порядке убывания");
+                    break;
+                }
+            }
+            if (k >= massive.length - 1) {
+                System.out.println("Массив идёт в порядке убывания!");
+            }
+        }
+    }
+
+    public static void myMethod3(int[] massive) {
+        int[] massiveReverse = new int[massive.length];
+        for (int i = 0; i < massive.length; i++) {
+            massiveReverse[i] = massive[massive.length - 1 - i];
+            System.out.print(massiveReverse[i] + " ");
+        }
+    }
+
+    public static void myMethod4(int[] massive) {
+        int check = massive[0];
+        int check2 = 0;
+        for (int j = 1; j < massive.length; j++) {
+            check2 += massive[j];
+        }
+        for (int i = 1; i < massive.length; i++) {
+            if (check != check2) {
+                check += massive[i];
+                check2 -= massive[i];
+                if(i == massive.length-1){
+                    System.out.println("Равенства нет!");
+                }
+            } else {
+                System.out.println("Массив равен между цифр " + massive[i - 1] + " и " + massive[i]);
+                break;
+            }
+        }
+    }
+}
